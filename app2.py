@@ -3,6 +3,7 @@ import random
 import requests
 from unidecode import unidecode
 from bs4 import BeautifulSoup
+import csv
 
 """IDEES
 - mettre un mode "sans limite de temps" sur la homepage et un mode "chrono" sur une autre
@@ -14,10 +15,26 @@ from bs4 import BeautifulSoup
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'
 
-lettres = {
+lettres_unweighted = {
     'voyelles': 'AEIOUY',
     'consonnes': 'BCDFGHJKLMNPQRSTVWXZ'
 }
+
+with open('letter_weighting.csv', newline='', encoding='utf-8') as csvfile:
+    csv_reader = csv.reader(csvfile, delimiter=';')
+    letter_weighting = {}
+    for row in csv_reader:
+        #letter_weighting.append(row)
+        letter_weighting[row[0]] = row[1]
+
+lettres={
+    'voyelles': '',
+    'consonnes': ''
+}
+
+for lettre_type in lettres_unweighted:
+    for lettre in lettres_unweighted[lettre_type]:
+        lettres[lettre_type] = lettres[lettre_type] + lettre * int(letter_weighting[lettre])
 
 nb_consonnes = 5
 nb_voyelles = 5
