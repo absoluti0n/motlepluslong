@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>gros con va</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+    function addLetterToInput(letter) {
+        document.getElementById('userWordInput').value += letter;
+    }
+
+    function handleLetterClick(element, letter) {
+        const isClicked = element.getAttribute('data-clicked') === 'true';
+
+        if (!isClicked) {
+            element.setAttribute('data-clicked', 'true');
+            element.style.opacity = '0.5'; // Change opacity to visually indicate the clicked state
+
+            // Additional actions when the letter is clicked
+            addLetterToInput(letter);
+        }
+
+        if (isClicked) {
+            const userInput = document.getElementById('userWordInput');
+            const userWord = userInput.value;
+
+            element.setAttribute('data-clicked', 'false');
+            element.style.opacity = '1';
+
+            // Check if the clicked letter is present in the userWordInput
+            if (userWord.includes(letter)) {
+                // Remove the letter from the userWordInput value
+                const modifiedWord = userWord.replace(letter, '');
+                userInput.value = modifiedWord;
+            }
+        }
+    }
+
+    window.onload = function() {
+        // Set focus to the user_word input field on page load
+        document.getElementById('userWordInput').focus();
+    }
+    </script>
+</head>
+<body>
+
+<label class="toggle">
+  <input class="toggle-checkbox" type="checkbox">
+  <div class="toggle-switch"></div>
+</label>
+
+    <div class="container">
+        <!--<h1>Question pour un pégut</h1>-->
+
+
+        <!-- Affichage des lettres aléatoires -->
+        <div class="letters-container">
+            {% if letters %}
+                {% for letter in letters %}
+                    <div class="letter-box" data-clicked="false" onclick="handleLetterClick(this, '{{ letter }}')">{{ letter }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+
+        <!-- Bouton pour générer des lettres aléatoires -->
+        <form method="POST">
+            <button type="submit" name="generate_lettres" class="button-6" role="button" onclick="resetLetterBoxes()">Nouveau Tirage</button>
+            <button type="submit" role="button" class="button-6" name="solution" onclick="resetLetterBoxes()">Solution</button>
+        </form>
+
+
+        <!-- Formulaire pour saisir des mots -->
+        <form method="POST">
+            <input type="text" name="user_word" class="user_input" id="userWordInput" placeholder="Entrez un mot" autocomplete="off">
+            <button type="submit" role="button" class="button-6" onclick="resetLetterBoxes()">Ajouter</button>
+        </form>
+
+
+        <!-- Affichage du message d'erreur -->
+            {% if error %}
+                    <div class="error">{{ error }}</div>
+            {% endif %}
+
+
+        <!-- Affichage des mots saisis -->
+        {% if user_words %}
+            <ul class="user-words">
+                {% for word in user_words %}
+                    <li>{{ word|length }}  -  {{ word }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

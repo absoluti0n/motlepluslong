@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Letter Generator</title>
+</head>
+<body>
+    <!--<form method="post">
+        <button type="submit" name="generate_lettres">Generate Letters</button>
+        {% if letters %}
+            <p>Generated Letters: {{ letters }}</p>
+        {% endif %}
+    </form>-->
+    <h1>Letters and Words</h1>
+    <p>Generated Letters: {{ letters }}</p>
+    <form method="post">
+        <button type="submit" name="generate_lettres">Generate Letters</button>
+    </form>
+    <br>
+    <form method="post">
+        <input type="text" name="user_word" placeholder="Enter a word...">
+        <button type="submit">Submit</button>
+        {% if user_input %}
+            <p>Your word: {{ user_input }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>

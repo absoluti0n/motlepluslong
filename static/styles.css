@@ -1,0 +1,199 @@
+/* styles.css */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.toggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  /*width: 35%;*/
+}
+
+.toggle-switch {
+  display: inline-block;
+  background: #ccc;
+  border-radius: 10px;
+  width: 38px;
+  height: 21px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.25s;
+}
+.toggle-switch:before, .toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-checkbox:checked + .toggle-switch {
+  background: #56c080;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+  left: 19px;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Helvetica', sans-serif;
+    color: #F0F0F0;
+    background-color: #333333;
+}
+h1 {
+    font-weight: bold;
+    padding-bottom: 30px;
+    font-size: 20px;
+}
+.container {
+    text-align: center;
+    margin-top: 40px;
+}
+form {
+    margin-bottom: 20px;
+}
+.user-words {
+    max-width: 300px; /* Réglez la largeur maximale selon vos besoins */
+    margin: 0 auto; /* Centre la liste */
+    text-align: left; /* Alignement du texte à gauche */
+}
+button[name="generate_lettres"] {
+    margin-bottom: 40px;
+}
+.letters {
+    font-weight: bold;
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+.letter-box {
+    display: inline-block;
+    width: 68px; /* Adjust width as needed */
+    height: 80px; /* Adjust height as needed */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4));
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin: 3px;
+    border: 1px solid black;
+    font-size: 65px; /* Adjust font size */
+    font-weight: bold;
+    font-family: 'Arial Black', sans-serif;
+    line-height: 75px; /* Adjust line height to center text vertically */
+    margin-bottom: 30px;
+    border-radius: .3rem;
+    /*text-shadow: 0px -5px 15px rgba(255, 255, 255, 0.5);*/
+    position:relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.letter-box:hover {
+    background-color: #d9d9d9; /* Changer la couleur de fond lors du survol */
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    transform: translateY(-1px);
+    transform: scale(1.05);
+}
+.letter-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4));
+    pointer-events: none; /* Allows clicks to pass through the pseudo-element */
+}
+.gradient {
+    /* Create a linear gradient as a background */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4));
+    /* Position the gradient over the text */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    pointer-events: none; /* Allows clicks to pass through the gradient layer */
+}
+.grayed-out {
+    opacity: 0.5; /* Opacité réduite pour griser la letter-box */
+    pointer-events: none; /* Désactiver les interactions avec la letter-box grise */
+}
+.button-6 {
+  align-items: center;
+  background-color: #818181;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  /*color: rgba(0, 0, 0, 0.85);*/
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  /*font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+  font-family: Arial;
+  font-size: 13 px;
+  /*font-weight: 600;*/
+  justify-content: center;
+  line-height: 0;
+  margin: 0;
+  /*min-height: 3rem;*/
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  /*font-weight: bold;*/
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+.error {
+  margin-bottom:20px;
+  font-size: 15px;
+  font-style: italic;
+}

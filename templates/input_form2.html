@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Form</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <label for="user_input">Entrez votre texte :</label><br>
+        <input type="text" id="user_input" name="user_input"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if user_input %}
+        <p>Vous avez saisi : {{ user_input }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Letters</title>
+</head>
+<body>
+
+    <form method="get" action="/generer-lettres">
+        <button type="submit">Generate Letters</button>
+    </form>
+    <br>
+    {% if letters %}
+        <p>{{ letters }}</p>
+    {% endif %}
+    <br>
+    <form method="post">
+        <input type="text" name="user_input" value="{{ user_input }}" placeholder="Your input...">
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    {% if user_input %}
+        <p>Vous avez saisi : {{ user_input }}</p>
+    {% endif %}
+</body>
+</html>
