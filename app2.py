@@ -24,10 +24,9 @@ with open('letter_weighting.csv', newline='', encoding='utf-8') as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=';')
     letter_weighting = {}
     for row in csv_reader:
-        #letter_weighting.append(row)
         letter_weighting[row[0]] = row[1]
 
-lettres={
+lettres = {
     'voyelles': '',
     'consonnes': ''
 }
