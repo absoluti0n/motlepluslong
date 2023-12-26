@@ -140,7 +140,7 @@ def index():
             if user_input.capitalize() not in capitalized_session:
                 if check_letters(unidecode(user_input).upper(), session['letters']):
                     if doeswordexist(user_input.lower()):
-                        session['user_words'].append(user_input.capitalize())
+                        session['user_words'].append(user_input.lower())
                         session['user_words'] = sorted(session['user_words'], key=len, reverse=True)
                     else:
                         print(user_input, ": doeswordexist failed")

@@ -61,7 +61,9 @@
   background: linear-gradient(to bottom, #fff 0%, #fff 100%);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
-
+.iwanttodie{
+    font-size:13px;
+}
 .toggle-checkbox:checked + .toggle-switch {
   background: #56c080;
 }
@@ -73,7 +75,21 @@
   position: absolute;
   visibility: hidden;
 }
-
+.bottom_container {
+    display: flex;
+    /*justify-content: space-between;*/
+    max-width: 50%;
+    margin: 0 auto;
+}
+.word-length{
+    font-weight:bold;
+    padding-right: 39px;
+}
+.left-section,
+.right-section {
+    flex: 1;
+    margin: 0 10px;
+}
 body {
     display: flex;
     flex-direction: column;
@@ -216,4 +232,12 @@ button[name="generate_lettres"] {
   margin-bottom:20px;
   font-size: 15px;
   font-style: italic;
+}
+.popup {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
